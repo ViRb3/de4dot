@@ -87,6 +87,9 @@ namespace de4dot.code.deobfuscators.Dotfuscator {
 				var convi2 = insNoNops[i + 1];
 				if (ldind.OpCode == OpCodes.Ldind_I2 && convi2.OpCode == OpCodes.Conv_I2)
 					nopIdxs.Add(instructions.IndexOf(convi2));
+				var convi = insNoNops[i + 2];
+				if (ldind.OpCode == OpCodes.Ldind_I2 && convi.OpCode == OpCodes.Conv_I)
+					nopIdxs.Add(instructions.IndexOf(convi));
 			}
 		}
 	}
